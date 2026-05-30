@@ -1,0 +1,37 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('subscription_history', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('old_package_id')->nullable()->constrained('subscription_packages')->onDelete('set null');
+            $table->foreignId('new_package_id')->nullable()->constrained('subscription_packages')->onDelete('set null');
+            $table->enum('action', ['assigned', 'upgraded', 'downgraded', 'renewed', 'cancelled']);
+            $table->foreignId('performed_by')->nullable()->constrained('users')->onDelete('set null'); // Admin who made the change
+            $table->text('notes')->nullable();
+            $table->timestamp('created_at');
+
+            // Index for faster queries
+            $table->index('user_id');
+            $table->index('created_at');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('subscription_history');
+    }
+};

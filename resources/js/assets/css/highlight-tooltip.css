@@ -1,0 +1,371 @@
+/* Highlight and Tooltip Global Styles */
+
+/* Highlight functionality styles */
+.select-text {
+    user-select: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+}
+
+mark[data-highlight-id] {
+    padding: 2px 0;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.highlight-nocolor {
+    background-color: transparent;
+}
+
+.highlight-yellow {
+    background-color: rgba(254, 240, 138, 0.8);
+}
+
+.highlight-green {
+    background-color: rgba(187, 247, 208, 0.5);
+}
+
+.highlight-blue {
+    background-color: rgba(191, 219, 254, 0.7);
+}
+
+.highlight-pink {
+    background-color: rgba(251, 207, 232, 0.5);
+}
+
+.highlight-orange {
+    background-color: rgba(254, 215, 170, 0.5);
+}
+
+/* Note Highlight Styles */
+.note-highlight {
+    background-color: rgba(191, 219, 254, 0.7) !important;
+    cursor: pointer;
+}
+
+/* Highlight Context Menu Tooltip - Arrow pointing DOWN */
+.highlight-tooltip .tooltip-arrow {
+    position: absolute;
+    left: 50%;
+    bottom: -8px;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid white;
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.1));
+    pointer-events: none;
+}
+
+.highlight-tooltip .tooltip-arrow::before {
+    content: '';
+    position: absolute;
+    left: -9px;
+    bottom: 1px;
+    width: 0;
+    height: 0;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-top: 9px solid #d1d5db;
+    z-index: -1;
+}
+
+/* Delete Highlight Tooltip - Arrow pointing UP */
+.delete-highlight-tooltip .tooltip-arrow-up {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid white;
+    filter: drop-shadow(0 -1px 1px rgba(0, 0, 0, 0.1));
+    pointer-events: none;
+}
+
+.delete-highlight-tooltip .tooltip-arrow-up::before {
+    content: '';
+    position: absolute;
+    left: -9px;
+    top: 1px;
+    width: 0;
+    height: 0;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-bottom: 9px solid #d1d5db;
+    z-index: -1;
+}
+
+/* Note Hover Tooltip - Arrow pointing DOWN */
+.note-hover-tooltip .tooltip-arrow-down {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid white;
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.1));
+    pointer-events: none;
+}
+
+.note-hover-tooltip .tooltip-arrow-down::before {
+    content: '';
+    position: absolute;
+    left: -9px;
+    bottom: 1px;
+    width: 0;
+    height: 0;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-top: 9px solid #d1d5db;
+    z-index: -1;
+}
+
+.note-hover-tooltip .note-tooltip-content {
+    max-width: 240px;
+}
+
+.note-hover-tooltip .note-tooltip-icon {
+    color: #6b7280;
+}
+
+.note-hover-tooltip .note-tooltip-text {
+    line-height: 1.4;
+}
+
+.note-hover-tooltip .note-delete-btn {
+    color: #9ca3af;
+}
+
+.note-hover-tooltip .note-delete-btn:hover {
+    color: #ef4444;
+}
+
+/* Theme Support for Note Hover Tooltip - White on Black */
+[data-theme='white-on-black'] .note-hover-tooltip .note-tooltip-content {
+    background: #1f2937 !important;
+    border-color: #4b5563 !important;
+}
+
+[data-theme='white-on-black'] .note-hover-tooltip .tooltip-arrow-down {
+    border-top-color: #1f2937 !important;
+}
+
+[data-theme='white-on-black'] .note-hover-tooltip .tooltip-arrow-down::before {
+    border-top-color: #4b5563 !important;
+}
+
+[data-theme='white-on-black'] .note-hover-tooltip .note-tooltip-icon {
+    color: #9ca3af !important;
+}
+
+[data-theme='white-on-black'] .note-hover-tooltip .note-tooltip-text {
+    color: white !important;
+}
+
+[data-theme='white-on-black'] .note-hover-tooltip .note-delete-btn {
+    color: #9ca3af !important;
+}
+
+[data-theme='white-on-black'] .note-hover-tooltip .note-delete-btn:hover {
+    color: #ef4444 !important;
+    background: #374151 !important;
+}
+
+/* Theme Support for Note Hover Tooltip - Yellow on Black */
+[data-theme='yellow-on-black'] .note-hover-tooltip .note-tooltip-content {
+    background: #1f2937 !important;
+    border-color: #4b5563 !important;
+}
+
+[data-theme='yellow-on-black'] .note-hover-tooltip .tooltip-arrow-down {
+    border-top-color: #1f2937 !important;
+}
+
+[data-theme='yellow-on-black'] .note-hover-tooltip .tooltip-arrow-down::before {
+    border-top-color: #4b5563 !important;
+}
+
+[data-theme='yellow-on-black'] .note-hover-tooltip .note-tooltip-icon {
+    color: #facc15 !important;
+}
+
+[data-theme='yellow-on-black'] .note-hover-tooltip .note-tooltip-text {
+    color: #facc15 !important;
+}
+
+[data-theme='yellow-on-black'] .note-hover-tooltip .note-delete-btn {
+    color: #facc15 !important;
+}
+
+[data-theme='yellow-on-black'] .note-hover-tooltip .note-delete-btn:hover {
+    color: #ef4444 !important;
+    background: #374151 !important;
+}
+
+/* Theme Support for Delete Highlight Tooltip - White on Black */
+[data-theme='white-on-black'] .delete-highlight-tooltip > div:last-child {
+    background: #1f2937 !important;
+    border-color: #4b5563 !important;
+}
+
+[data-theme='white-on-black'] .delete-highlight-tooltip .tooltip-arrow-up {
+    border-bottom-color: #1f2937 !important;
+}
+
+[data-theme='white-on-black'] .delete-highlight-tooltip .tooltip-arrow-up::before {
+    border-bottom-color: #4b5563 !important;
+}
+
+[data-theme='white-on-black'] .delete-highlight-tooltip button {
+    color: white !important;
+}
+
+[data-theme='white-on-black'] .delete-highlight-tooltip button:hover {
+    background: #374151 !important;
+}
+
+/* Theme Support for Delete Highlight Tooltip - Yellow on Black */
+[data-theme='yellow-on-black'] .delete-highlight-tooltip > div:last-child {
+    background: #1f2937 !important;
+    border-color: #4b5563 !important;
+}
+
+[data-theme='yellow-on-black'] .delete-highlight-tooltip .tooltip-arrow-up {
+    border-bottom-color: #1f2937 !important;
+}
+
+[data-theme='yellow-on-black'] .delete-highlight-tooltip .tooltip-arrow-up::before {
+    border-bottom-color: #4b5563 !important;
+}
+
+[data-theme='yellow-on-black'] .delete-highlight-tooltip button {
+    color: #facc15 !important;
+}
+
+[data-theme='yellow-on-black'] .delete-highlight-tooltip button:hover {
+    background: #374151 !important;
+}
+
+/* Theme Support for Context Menu - White on Black */
+[data-theme='white-on-black'] .highlight-tooltip > div:first-child {
+    background: #1f2937 !important;
+    border-color: #4b5563 !important;
+}
+
+[data-theme='white-on-black'] .highlight-tooltip .tooltip-arrow {
+    border-top-color: #1f2937 !important;
+}
+
+[data-theme='white-on-black'] .highlight-tooltip .tooltip-arrow::before {
+    border-top-color: #4b5563 !important;
+}
+
+[data-theme='white-on-black'] .highlight-tooltip button {
+    color: white !important;
+}
+
+[data-theme='white-on-black'] .highlight-tooltip button span {
+    color: white !important;
+}
+
+[data-theme='white-on-black'] .highlight-tooltip button:hover {
+    background: #374151 !important;
+}
+
+/* Theme Support for Context Menu - Yellow on Black */
+[data-theme='yellow-on-black'] .highlight-tooltip > div:first-child {
+    background: #1f2937 !important;
+    border-color: #4b5563 !important;
+}
+
+[data-theme='yellow-on-black'] .highlight-tooltip .tooltip-arrow {
+    border-top-color: #1f2937 !important;
+}
+
+[data-theme='yellow-on-black'] .highlight-tooltip .tooltip-arrow::before {
+    border-top-color: #4b5563 !important;
+}
+
+[data-theme='yellow-on-black'] .highlight-tooltip button {
+    color: #facc15 !important;
+}
+
+[data-theme='yellow-on-black'] .highlight-tooltip button span {
+    color: #facc15 !important;
+}
+
+[data-theme='yellow-on-black'] .highlight-tooltip button:hover {
+    background: #374151 !important;
+}
+
+/* Theme Support for Note Input Modal - White on Black */
+[data-theme='white-on-black'] .note-input-modal {
+    background: #1f2937 !important;
+    border-color: #4b5563 !important;
+}
+
+[data-theme='white-on-black'] .note-input-modal p {
+    color: white !important;
+    background: #374151 !important;
+    border-color: #4b5563 !important;
+}
+
+[data-theme='white-on-black'] .note-input-modal input {
+    background: #374151 !important;
+    border-color: #4b5563 !important;
+    color: white !important;
+}
+
+[data-theme='white-on-black'] .note-input-modal input::placeholder {
+    color: #9ca3af !important;
+}
+
+[data-theme='white-on-black'] .note-input-modal button:first-of-type {
+    background: transparent !important;
+    border-color: #4b5563 !important;
+    color: white !important;
+}
+
+[data-theme='white-on-black'] .note-input-modal button:last-of-type {
+    background: white !important;
+    color: #1f2937 !important;
+}
+
+/* Theme Support for Note Input Modal - Yellow on Black */
+[data-theme='yellow-on-black'] .note-input-modal {
+    background: #1f2937 !important;
+    border-color: #4b5563 !important;
+}
+
+[data-theme='yellow-on-black'] .note-input-modal p {
+    color: #facc15 !important;
+    background: #374151 !important;
+    border-color: #4b5563 !important;
+}
+
+[data-theme='yellow-on-black'] .note-input-modal input {
+    background: #374151 !important;
+    border-color: #4b5563 !important;
+    color: #facc15 !important;
+}
+
+[data-theme='yellow-on-black'] .note-input-modal input::placeholder {
+    color: #9ca3af !important;
+}
+
+[data-theme='yellow-on-black'] .note-input-modal button:first-of-type {
+    background: transparent !important;
+    border-color: #4b5563 !important;
+    color: #facc15 !important;
+}
+
+[data-theme='yellow-on-black'] .note-input-modal button:last-of-type {
+    background: #facc15 !important;
+    color: #1f2937 !important;
+}

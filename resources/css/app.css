@@ -1,0 +1,506 @@
+@import 'tailwindcss';
+
+@import 'tw-animate-css';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+/* Removed dark mode variant for light-only design */
+
+@theme inline {
+    --font-sans: Instrument Sans, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+    --radius-lg: var(--radius);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-sm: calc(var(--radius) - 4px);
+
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+
+    --color-sidebar: var(--sidebar-background);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+}
+
+@layer utilities {
+    body,
+    html {
+        --font-sans:
+            'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    }
+}
+
+:root {
+    /* Modern gradient background */
+    --background: hsl(210 20% 98%);
+    --foreground: hsl(215 25% 27%);
+
+    /* Clean white cards with subtle shadows */
+    --card: hsl(0 0% 100%);
+    --card-foreground: hsl(215 25% 27%);
+
+    /* Popover styling */
+    --popover: hsl(0 0% 100%);
+    --popover-foreground: hsl(215 25% 27%);
+
+    /* Modern blue primary colors */
+    --primary: hsl(217 91% 60%);
+    --primary-foreground: hsl(0 0% 98%);
+
+    /* Soft secondary colors */
+    --secondary: hsl(210 40% 96%);
+    --secondary-foreground: hsl(215 25% 27%);
+
+    /* Muted tones */
+    --muted: hsl(210 40% 96%);
+    --muted-foreground: hsl(215 13% 65%);
+
+    /* Accent colors */
+    --accent: hsl(210 40% 94%);
+    --accent-foreground: hsl(215 25% 27%);
+
+    /* Destructive colors */
+    --destructive: hsl(0 84% 60%);
+    --destructive-foreground: hsl(0 0% 98%);
+
+    /* Modern borders */
+    --border: hsl(214 32% 91%);
+    --input: hsl(214 32% 91%);
+    --ring: hsl(217 91% 60%);
+
+    /* Chart colors */
+    --chart-1: hsl(217 91% 60%);
+    --chart-2: hsl(142 71% 45%);
+    --chart-3: hsl(346 87% 62%);
+    --chart-4: hsl(45 93% 58%);
+    --chart-5: hsl(271 81% 56%);
+
+    /* Enhanced radius for modern look */
+    --radius: 0.75rem;
+
+    /* Modern sidebar with glass morphism effect */
+    --sidebar-background: hsl(0 0% 100% / 0.8);
+    --sidebar-foreground: hsl(215 25% 27%);
+    --sidebar-primary: hsl(217 91% 60%);
+    --sidebar-primary-foreground: hsl(0 0% 98%);
+    --sidebar-accent: hsl(217 32% 96%);
+    --sidebar-accent-foreground: hsl(215 25% 27%);
+    --sidebar-border: hsl(214 32% 91% / 0.5);
+    --sidebar-ring: hsl(217 91% 60%);
+    --sidebar: hsl(0 0% 100% / 0.8);
+}
+
+@layer base {
+    * {
+        @apply border-border outline-ring/50;
+    }
+
+    /* Reset mark element default browser styles */
+    mark {
+        background: transparent;
+        color: inherit;
+    }
+
+    body {
+        @apply bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/30 text-foreground;
+        min-height: 100vh;
+    }
+
+    /* Modern glass morphism effects */
+    .glass-morphism {
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        background: rgba(255, 255, 255, 0.85);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* Enhanced shadows for modern depth */
+    .modern-shadow {
+        box-shadow:
+            0 1px 2px 0 rgba(0, 0, 0, 0.05),
+            0 1px 3px 1px rgba(0, 0, 0, 0.05);
+    }
+
+    .modern-shadow-lg {
+        box-shadow:
+            0 4px 6px -1px rgba(0, 0, 0, 0.1),
+            0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* ===== Part Header Box ===== */
+.part-header-box {
+    background-color: #F1F2EC;
+}
+
+/* ===== Note Tooltip Styles ===== */
+/* Note wrapper - contains highlighted text and tooltip */
+.note-wrapper {
+    position: relative;
+    display: inline;
+    z-index: 1;
+}
+
+.note-wrapper:hover {
+    z-index: 99999;
+}
+
+/* Highlighted text with note */
+.note-highlight {
+    background: rgba(253, 224, 71, 0.35);
+    border-bottom: 1.5px solid #eab308;
+    cursor: pointer;
+    position: relative;
+    display: inline;
+    padding: 0 1px;
+    border-radius: 2px;
+    transition: all 0.2s ease;
+}
+
+.note-highlight::after {
+    content: '📝';
+    display: inline-block;
+    margin-left: 2px;
+    font-size: 0.65em;
+    vertical-align: super;
+    line-height: 1;
+    opacity: 0.75;
+    pointer-events: none;
+    transition: all 0.2s ease;
+}
+
+/*.note-wrapper:hover .note-highlight {*/
+/*    background: rgba(253, 224, 71, 0.5);*/
+/*    border-bottom-color: #ca8a04;*/
+/*}*/
+
+.note-wrapper:hover .note-highlight::after {
+    opacity: 1;
+}
+
+/* Custom tooltip */
+.note-tooltip {
+    position: fixed;
+    z-index: 99999;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    padding-bottom: 10px;
+    /* Will be positioned by JS */
+}
+
+.note-wrapper:hover .note-tooltip {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    animation: tooltipSlideIn 0.25s ease-out forwards;
+}
+
+/* Tooltip content box */
+.note-tooltip-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    color: #374151;
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+    min-width: 160px;
+    max-width: 300px;
+    border: 3px solid #e5e7eb;
+    box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.08),
+        0 2px 4px -1px rgba(0, 0, 0, 0.04);
+    white-space: normal;
+    word-wrap: break-word;
+    text-align: left;
+}
+
+/* Note icon section */
+.note-tooltip-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: #f3f4f6;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+/* SVG icon inside the icon container */
+.note-tooltip-icon svg {
+    width: 16px;
+    height: 16px;
+    color: #6b7280;
+}
+
+/* Note text section */
+.note-tooltip-text {
+    flex: 1;
+    font-weight: 450;
+    color: #1f2937;
+    letter-spacing: -0.01em;
+}
+
+/* Delete button in tooltip */
+.note-delete-btn {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    cursor: pointer;
+    color: #9ca3af;
+    transition: all 0.15s ease;
+}
+
+.note-delete-btn:hover {
+    background: #fef2f2;
+    border-color: #fecaca;
+    color: #ef4444;
+}
+
+.note-delete-btn:active {
+    transform: scale(0.95);
+}
+
+.note-delete-btn svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* Tooltip arrow */
+.note-tooltip-content::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 8px solid transparent;
+    border-top-color: #e5e7eb;
+}
+
+.note-tooltip-content::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 7px solid transparent;
+    border-top-color: #fff;
+    margin-top: -1px;
+}
+
+/* Arrow pointing up when tooltip is below */
+.note-tooltip.tooltip-below .note-tooltip-content::before {
+    top: auto;
+    bottom: 100%;
+    border-top-color: transparent;
+    border-bottom-color: #e5e7eb;
+}
+
+.note-tooltip.tooltip-below .note-tooltip-content::after {
+    top: auto;
+    bottom: 100%;
+    margin-top: 0;
+    margin-bottom: -1px;
+    border-top-color: transparent;
+    border-bottom-color: #fff;
+}
+
+/* Animation for tooltip entrance */
+@keyframes tooltipSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(6px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* Highlight color classes */
+.highlight-nocolor {
+    background-color: transparent;
+}
+
+.highlight-yellow,
+mark.highlight-yellow {
+    background-color: rgba(254, 240, 138, 0.9) !important;
+    background: rgba(254, 240, 138, 0.9) !important;
+    color: inherit;
+    padding: 2px 0;
+    border-radius: 2px;
+}
+
+.highlight-green {
+    background-color: rgba(187, 247, 208, 0.5);
+}
+
+.highlight-blue {
+    background-color: rgba(191, 219, 254, 0.9);
+}
+
+.highlight-pink {
+    background-color: rgba(251, 207, 232, 0.5);
+}
+
+.highlight-orange {
+    background-color: rgba(254, 215, 170, 0.5);
+}
+
+/* ===== Performance Optimizations for Low-Spec Devices ===== */
+/* Reduce animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    /* Specifically disable infinite animations */
+    .animate-pulse,
+    .animate-bounce,
+    .animate-spin,
+    [class*='animate-'] {
+        animation: none !important;
+    }
+}
+
+/* Utility class to force disable animations (can be toggled via JS) */
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+}
+
+.reduce-motion .animate-pulse,
+.reduce-motion .animate-bounce,
+.reduce-motion .animate-spin,
+.reduce-motion [class*='animate-'] {
+    animation: none !important;
+}
+
+/* ===== Hide Scrollbar for Reading Pages ===== */
+.hide-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+}
+
+/* Global scrollbar hiding for Reading section */
+.reading-no-scrollbar,
+.reading-no-scrollbar body,
+.reading-no-scrollbar html {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.reading-no-scrollbar::-webkit-scrollbar,
+.reading-no-scrollbar body::-webkit-scrollbar,
+.reading-no-scrollbar html::-webkit-scrollbar {
+    display: none;
+}
+
+/* ===== Delete Highlight Tooltip ===== */
+.delete-highlight-tooltip .tooltip-arrow-up {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid white;
+    filter: drop-shadow(0 -1px 1px rgba(0, 0, 0, 0.1));
+}
+
+.delete-highlight-tooltip .tooltip-arrow-up::before {
+    content: '';
+    position: absolute;
+    left: -9px;
+    top: 1px;
+    width: 0;
+    height: 0;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-bottom: 9px solid #d1d5db;
+    z-index: -1;
+}
+
+/* Make highlighted text clickable cursor */
+mark[data-highlight-id] {
+    cursor: pointer;
+}
